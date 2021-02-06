@@ -8,5 +8,11 @@ class ArticleResponse {
 
   ArticleResponse.fromJson(Map<String, dynamic> json)
       : articles = (json["articles"] as List)
-            .map((i) => ArticleModel.fromJson(i).toList());
+            .map((i) => new ArticleModel.fromJson(i))
+            .toList(),
+        error = "";
+  ArticleResponse.withError(String errorvalue)
+      // ignore: deprecated_member_use
+      : articles = List(),
+        error = errorvalue;
 }
