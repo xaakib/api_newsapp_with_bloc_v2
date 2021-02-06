@@ -1,3 +1,4 @@
+import 'package:api_newsapp_with_bloc_v2/model/source_response.dart';
 import 'package:dio/dio.dart';
 
 class NewsRepository {
@@ -6,4 +7,20 @@ class NewsRepository {
   final Dio _dio = Dio();
 
   var getSourceurl = "$mainUrl/sources";
+  var getTopheadlineUrl = "$mainUrl/top-headlines";
+  var everythingUrl = "$mainUrl/everything";
+
+  Future<SourceResponse> getSource() async {
+    var params = {
+      "apiKey": apiKey,
+      "language": "en",
+      "country": "us",
+    };
+    try {
+      Response response = await _dio.get(getSourceurl, queryParameters: params);
+      return SourceResponse.fromJson(response.data);
+    } catch (error, stacktrace) {
+      print("Exception occured: $error stackTrace ; $stacktrace");
+    }
+  }
 }
