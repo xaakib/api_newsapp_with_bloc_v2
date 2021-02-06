@@ -1,3 +1,4 @@
+import 'package:api_newsapp_with_bloc_v2/model/article_response.dart';
 import 'package:api_newsapp_with_bloc_v2/model/source_response.dart';
 import 'package:dio/dio.dart';
 
@@ -10,7 +11,7 @@ class NewsRepository {
   var getTopheadlineUrl = "$mainUrl/top-headlines";
   var everythingUrl = "$mainUrl/everything";
 
-  Future<SourceResponse> getSource() async {
+  Future<SourceResponse> getSources() async {
     var params = {
       "apiKey": apiKey,
       "language": "en",
@@ -21,6 +22,20 @@ class NewsRepository {
       return SourceResponse.fromJson(response.data);
     } catch (error, stacktrace) {
       print("Exception occured: $error stackTrace ; $stacktrace");
+    }
+  }
+
+  Future<ArticleResponse> getTopHeadLines() async {
+    var params = {
+      "apiKey": apiKey,
+      "country": "us",
+    };
+    try {
+      Response response =
+          await _dio.get(getTopheadlineUrl, queryParameters: params);
+      return ArticleResponse.fromJson(response.data);
+    } catch (e) {
+      return ArticleResponse.withError(e);
     }
   }
 }
