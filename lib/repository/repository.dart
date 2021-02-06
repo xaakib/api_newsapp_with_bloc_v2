@@ -38,4 +38,47 @@ class NewsRepository {
       return ArticleResponse.withError(e);
     }
   }
+
+  Future<ArticleResponse> getHotNews() async {
+    var params = {
+      "apiKey": apiKey,
+      "q": "apple",
+      "sortBy": "popularity",
+    };
+    try {
+      Response response =
+          await _dio.get(everythingUrl, queryParameters: params);
+      return ArticleResponse.fromJson(response.data);
+    } catch (e) {
+      return ArticleResponse.withError(e);
+    }
+  }
+
+  Future<ArticleResponse> getSourceNews(String sourceId) async {
+    var params = {
+      "apiKey": apiKey,
+      "sources": sourceId,
+    };
+    try {
+      Response response =
+          await _dio.get(getTopheadlineUrl, queryParameters: params);
+      return ArticleResponse.fromJson(response.data);
+    } catch (e) {
+      return ArticleResponse.withError(e);
+    }
+  }
+
+  Future<ArticleResponse> getSearch(String searchValue) async {
+    var params = {
+      "apiKey": apiKey,
+      "q": searchValue,
+    };
+    try {
+      Response response =
+          await _dio.get(getTopheadlineUrl, queryParameters: params);
+      return ArticleResponse.fromJson(response.data);
+    } catch (e) {
+      return ArticleResponse.withError(e);
+    }
+  }
 }
