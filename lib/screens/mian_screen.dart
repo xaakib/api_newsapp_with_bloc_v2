@@ -1,5 +1,5 @@
 import 'package:api_newsapp_with_bloc_v2/bloc/bottom_navBar_bloc.dart';
-import 'package:api_newsapp_with_bloc_v2/model/article.dart';
+import 'package:api_newsapp_with_bloc_v2/model/source.dart';
 import 'package:flutter/material.dart';
 import 'package:api_newsapp_with_bloc_v2/style/theme.dart' as theme;
 import 'package:eva_icons_flutter/eva_icons_flutter.dart';
@@ -11,7 +11,7 @@ class MainScreen extends StatefulWidget {
 
 class _MainScreenState extends State<MainScreen> {
   BottomNavBarBloc _bottomNavBarBloc;
-  ArticleModel _articleModel;
+  SourceModel _sourceModel;
 
   @override
   void initState() {
@@ -21,7 +21,6 @@ class _MainScreenState extends State<MainScreen> {
 
   @override
   Widget build(BuildContext context) {
-    print(_articleModel.title);
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: PreferredSize(
@@ -38,13 +37,13 @@ class _MainScreenState extends State<MainScreen> {
           builder: (BuildContext context, AsyncSnapshot<NavBarItem> snapshot) {
             switch (snapshot.data) {
               case NavBarItem.HOME:
-                return Container();
+                return testScreen();
 
               case NavBarItem.SOURCES:
-                return Container();
+                return testScreen();
 
               case NavBarItem.SEARCH:
-                return Container();
+                return testScreen();
             }
           },
         ),
@@ -113,6 +112,26 @@ class _MainScreenState extends State<MainScreen> {
             ),
           );
         },
+      ),
+    );
+  }
+
+  Widget testScreen() {
+    return Container(
+      color: Colors.white,
+      width: MediaQuery.of(context).size.width,
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          Text(
+            "Test Screen",
+            style: TextStyle(
+              color: Colors.red,
+              fontWeight: FontWeight.bold,
+            ),
+          )
+        ],
       ),
     );
   }
