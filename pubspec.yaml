@@ -31,12 +31,12 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  bloc: ^6.1.1
+  bloc: ^6.0.1
   carousel_slider: ^3.0.0
   dio: ^3.0.10
   eva_icons_flutter: ^2.0.1
   flutter_html: ^1.2.0
-  rxdart: ^0.25.0
+  rxdart: ^0.24.1
   timeago: ^2.0.29
   url_launcher: ^5.7.10
 
