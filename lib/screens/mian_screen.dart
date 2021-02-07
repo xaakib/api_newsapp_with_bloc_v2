@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:api_newsapp_with_bloc_v2/style/theme.dart' as theme;
 import 'package:eva_icons_flutter/eva_icons_flutter.dart';
 
+import 'tabs/home_screen.dart';
+
 class MainScreen extends StatefulWidget {
   @override
   _MainScreenState createState() => _MainScreenState();
@@ -37,7 +39,7 @@ class _MainScreenState extends State<MainScreen> {
           builder: (BuildContext context, AsyncSnapshot<NavBarItem> snapshot) {
             switch (snapshot.data) {
               case NavBarItem.HOME:
-                return testScreen();
+                return HomeScreen();
 
               case NavBarItem.SOURCES:
                 return testScreen();

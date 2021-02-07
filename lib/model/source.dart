@@ -1,16 +1,16 @@
 class SourceModel {
   final String id;
-  final String title;
+  final String name;
   final String descriptions;
   final String url;
   final String category;
   final String language;
   final String country;
 
-  SourceModel(this.id, this.title, this.descriptions, this.url, this.category,
+  SourceModel(this.id, this.name, this.descriptions, this.url, this.category,
       this.language, this.country);
   SourceModel.fromJson(Map<String, dynamic> json)
-      : title = json["name"],
+      : name = json["name"],
         id = json["id"],
         descriptions = json["description"],
         url = json["url"],
