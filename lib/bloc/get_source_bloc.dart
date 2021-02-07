@@ -20,4 +20,4 @@ class GetSourceBloc {
   BehaviorSubject<SourceResponse> get subject => _subject;
 }
 
-final getTopHeadLinesBloc = GetSourceBloc();
+final getSources = GetSourceBloc();
